@@ -1,22 +1,21 @@
+import { BrowserRouter as Router, Route, Routes, Link } from "react-router-dom";
 import "./App.css";
-import ProductList from "./components/ProductList";
-import { DarModeButton } from "./components/DarkModeButton";
-import { ResetFilterButton } from "./components/ResetFilterButton";
+import ArtistList from "./components/ArtistList";
 import SearchBar from "./components/SearchBar";
-import { Filter } from "./components/Filters";
-import { SortByPrice } from "./components/SortByPriceButton";
 
-function App() {
+const App = () => {
   return (
-    <>
-      <DarModeButton />
-      <ResetFilterButton></ResetFilterButton>
-      <SearchBar />
-      <SortByPrice />
-      <Filter />
-      <ProductList></ProductList>
-    </>
+    <Router>
+      <div>
+        <Link to="/">Home</Link>
+
+        <Routes>
+          <Route path="/" element={<SearchBar />} />
+          <Route path="/primary-artists" element={<ArtistList />} />
+        </Routes>
+      </div>
+    </Router>
   );
-}
+};
 
 export default App;
